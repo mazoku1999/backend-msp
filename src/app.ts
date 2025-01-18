@@ -36,16 +36,17 @@ app.get('/', (_req, res) => {
     res.json({ message: 'API MSP funcionando correctamente' });
 });
 
-// Exportar la aplicación para Vercel
-export default app;
+// Modificar la exportación para Vercel
+const PORT = process.env.PORT || 3000;
 
-// Solo escuchar en el puerto cuando no estamos en Vercel
 if (process.env.NODE_ENV !== 'production') {
-    const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
         logger.info(`Servidor corriendo en puerto ${PORT}`);
     });
 }
+
+// Asegúrate de que esta sea la última línea del archivo
+module.exports = app;
 
 // Manejo de errores no capturados
 process.on('unhandledRejection', (err: any) => {

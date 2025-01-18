@@ -1,8 +1,10 @@
 import { CorsOptions } from 'cors';
 
 export const corsOptions: CorsOptions = {
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: [
+        'http://localhost:3000',
+        'https://motionsoundnews.com',
+        'https://api.motionsoundnews.com'
+    ],
     credentials: true
 }; 
